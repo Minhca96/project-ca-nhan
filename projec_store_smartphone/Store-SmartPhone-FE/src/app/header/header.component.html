@@ -1,0 +1,47 @@
+
+<div class="pre-header">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-6 col-sm-6 additional-shop-info">
+        <ul class="list-unstyled list-inline">
+          <li><i class="fa fa-phone"></i><span>+823202020</span></li>
+
+          <li class="shop-currencies">
+            <a href="javascript:void(0);">€</a>
+            <a href="javascript:void(0);">VND</a>
+            <a href="javascript:void(0);" >$</a>
+          </li>
+
+          <li class="langs-block">
+            <a href="javascript:void(0);" class="current">English </a>
+            <div class="langs-block-others-wrapper">
+              <div class="langs-block-others">
+                <a href="javascript:void(0);">French</a>
+                <a href="javascript:void(0);">Germany</a>
+                <a href="javascript:void(0);">Turkish</a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 col-sm-6 additional-nav">
+        <ul class="list-unstyled list-inline pull-right">
+          <li><a href="shop-account.html">My Account</a></li>
+          <li *ngIf="[(checkToken)] != null"><a routerLink="listProduct">List Product</a></li>
+          <li><a routerLink="register">Sign Up</a></li>
+          <li><a routerLink="authenticate">Log In</a></li>
+          <li><a routerLink="#" (click)="logOut()">Log Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END TOP BAR -->
+
+<!--<app-login #user></app-login>-->
+
+
+
+

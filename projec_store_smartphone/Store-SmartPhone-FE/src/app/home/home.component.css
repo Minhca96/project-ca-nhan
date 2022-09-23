@@ -1,0 +1,39 @@
+#menu {
+  height: 30px;
+  /*background-color: black;*/
+}
+
+#menu li:hover {
+  background-color: white;
+}
+
+#menu ul ul {
+  position: absolute;
+  left: 0;
+  padding: 0;
+  visibility: hidden;
+  text-align: center;
+}
+
+#menu ul li:hover ul {
+  visibility: visible;
+}
+
+
+#menu li{
+  list-style: none;
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 30px;
+  background-color: #ffd400;
+  color: black;
+  /*padding: 0 20px ;*/
+  line-height: 29px;
+  cursor: pointer;
+  font-size: 17px;
+  text-align: center;
+}
+/*#menu li:hover{*/
+/*  background-color: #ffd400;*/
+/*}*/

@@ -1,0 +1,76 @@
+<div class="container" id="list_product">
+  <div class="row">
+   <div class="col-12" id="header_table">
+     <div class="row">
+       <div class="col-5">
+         <label for="nameProduct">Name Product</label><br>
+         <input id="nameProduct" style="margin-bottom: 5px" type="text " placeholder="input name product to search" [(ngModel)]="nameProduct" class="form-control">
+       </div>
+       <div class="col-4">
+         <label for="code_product">Code Product</label><br>
+         <select name="" id="code_product" [(ngModel)]="codeProduct" class="form-control">
+           <option value="">All Product</option>
+           <option value="smart_phone">Smart Phone</option>
+           <option value="table">Table</option>
+           <option value="smart_watch">Smart Watch</option>
+           <option value="smart_tv">smart TV</option>
+         </select>
+<!--         <label for="code_product">Code Product</label><br>-->
+<!--         <nz-select id="code_product" [(ngModel)]="codeProduct">-->
+<!--           <nz-option nzValue="" nzLabel="All Product" ></nz-option>-->
+<!--           <nz-option nzValue="smart_phone" nzLabel="Smart Phone"></nz-option>-->
+<!--           <nz-option nzValue="table" nzLabel="Table"></nz-option>-->
+<!--           <nz-option nzValue="smart_phone" nzLabel="Smart Watch"></nz-option>-->
+<!--           <nz-option nzValue="smart_watch" nzLabel="smart TV"></nz-option>-->
+<!--         </nz-select>-->
+       </div>
+       <div class="col-2">
+         <br>
+         <button style="margin-top: 5px" class="form-control"  (click)="search()">Search</button>
+
+       </div>
+       <div class="col-1">
+         <br>
+         <button class="form-control" style="margin-top: 5px">Delete</button>
+       </div>
+     </div>
+   </div>
+    <div class="col-12">
+      <table class="table table-striped table-hover m-auto">
+        <thead>
+        <tr>
+          <th>Name Product</th>
+          <th>Image</th>
+          <th>Code Product</th>
+          <th>Configuration</th>
+          <th>price</th>
+          <th>Status</th>
+          <th>Choose</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of listProduct">
+          <td>{{product.name}}</td>
+          <td><img src="{{product.imageProduct}}" width="60px" height="60px" alt=""></td>
+          <td>{{product.codeProduct}}</td>
+          <td>{{product.configurationProduct}}</td>
+          <td>{{product.priceProduct | currency: "VND"}}</td>
+          <td *ngIf="product.flag == 1" style="color: #1adbd2">Verify</td>
+          <td *ngIf="product.flag == 0" style="color: red">No Verify</td>
+          <td><input type="checkbox" class="form-check-input"></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="col-12 clearfix" style="margin-top: 10px">
+        <div *ngIf="totalElements > 0" class="hint-text">Total list have  <span style="color: orangered; font-weight: bold">{{totalElements}}</span> product</div>
+        <div *ngIf="totalElements == 0" class="hint-text">No products match </div>
+        <ul class="pagination">
+          <li *ngIf="page != 0" class="page-item"><a (click)="previousPage()" class="page-link" style="cursor: pointer">Previous</a></li>
+          <li *ngIf="totalPages > 0">{{page + 1}} in {{totalPages }}</li>
+          <li *ngIf="page<totalPages - 1"><a (click)="nextPage()" class="page-link" style="cursor: pointer">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>

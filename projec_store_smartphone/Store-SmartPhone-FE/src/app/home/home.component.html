@@ -1,0 +1,308 @@
+<div class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-2">
+        <a class="site-logo" href="#"><img src="assets/corporate/img/logos/logo MinhCaSmartPhone New.png"
+                                           width="90" height="60"   alt="Metronic Shop UI"></a>
+      </div>
+
+      <div class="col-7" id="menu" style="float: right" >
+        <ul style="margin-top: 30px;"  >
+          <li>SmartPhone
+            <ul>
+              <li>Samsung</li>
+              <li>Apple</li>
+              <li>Xiaomi</li>
+              <li>Vivo</li>
+              <li>Oppo</li>
+              <li>Realme</li>
+              <li>Huawei</li>
+            </ul>
+          </li>
+
+          <li>Tablet
+            <ul>
+              <li>Lenovo</li>
+              <li>Samsung</li>
+              <li>Xiaomi</li>
+              <li>Apple</li>
+            </ul>
+          </li>
+
+          <li >SmartWatch
+            <ul>
+              <li>Apple</li>
+              <li>Xiaomi</li>
+              <li>SamSung</li>
+              <li>Huawei</li>
+              <li>Oppo</li>
+            </ul>
+          </li>
+
+          <li >SmartTV
+            <ul>
+              <li>Samsung</li>
+              <li>Xiaomi</li>
+              <li>LG</li>
+              <li>Sony</li>
+              <li>TCL</li>
+              <li>Caper</li>
+            </ul>
+          </li>
+
+          <li >Accessory
+            <ul>
+              <li>Pin</li>
+              <li>Phone Case</li>
+              <li>Adapter</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <!-- BEGIN CART -->
+      <div class="top-cart-block col-3" >
+        <div class="top-cart-info" >
+          <span style="color: black" class="top-cart-info-count">{{carts.length}} items</span>
+          <span style="color: black" class="top-cart-info-value">{{sumPrice | currency: "VND"}}</span>
+        </div>
+        <!--        <div class="top-cart-info" *ngIf="flag1 == true">-->
+        <!--          <span style="color: black" class="top-cart-info-count">{{home.cart.length}} items</span>-->
+        <!--          <span style="color: black" class="top-cart-info-value">{{sum | currency: "VND"}}</span>-->
+        <!--        </div>-->
+        <i class="fa fa-shopping-cart"></i>
+
+        <div class="top-cart-content-wrapper">
+          <div class="top-cart-content" >
+            <ul class="scroller" style="height: 70px;" *ngFor="let cart of carts; let i = index">
+              <li>
+                <a href="#"><img src="{{cart.imageProduct}}" alt="Rolex Classic Watch" width="37"
+                                 height="34"></a>
+                <span class="cart-content-count">x 1</span>
+                <strong>{{cart.name}}</strong>
+                <em>{{cart.priceProduct | currency: "VND"}}</em>
+                <a href="javascript:void(0);" class="del-goods" (click)="delete(i,carts,sumPrice)" >&nbsp;</a>
+              </li>
+
+            </ul>
+            <div class="text-right">
+              <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>
+              <a href="shop-checkout.html" class="btn btn-primary">Checkout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="main">
+  <div class="container">
+<!--        <div class="row margin-bottom-20 ">-->
+        <h2>SmartPhone</h2>
+          <div class="row" >
+            <div class="product-item col-md-3 " *ngFor="let smartphone of listSmartPhone" style="float: left !important;" >
+              <div class="pi-img-wrapper" >
+                <img id="zoomSmartPhone" src="{{smartphone.imageProduct}}" class="img-responsive" alt="Berry Lace Dress" >
+                <div>
+<!--                  <a href="{{smartphone.imageSmartPhone}}" class="btn btn-default fancybox-button">Zoom</a>-->
+                  <a href="#product-pop-up" class="btn btn-default fancybox-fast-view" (click)="requestId(smartphone.id)">View</a>
+                </div>
+              </div>
+              <h3><a href="#">{{smartphone.name}}</a></h3>
+              <div class="pi-price">{{smartphone.priceProduct  | currency: "VND"}} </div>
+              <a  class="btn btn-default add2cart" (click)="addCart(smartphone.id)">Add to cart</a>
+              <div class="sticker sticker-sale"></div>
+            </div>
+          </div>
+<!--        </div>-->
+
+
+<!--    <div class="row margin-bottom-20 ">-->
+        <h2>Tablet</h2>
+          <div class="row">
+            <div class="product-item col-md-3" *ngFor="let tablet of listTablet">
+              <div class="pi-img-wrapper">
+                <img id="zoomTablet" src="{{tablet.imageProduct}}" class="img-responsive" alt="Berry Lace Dress">
+                <div>
+<!--                  <a href="{{tablet.imageTablet}}" class="btn btn-default fancybox-button">Zoom</a>-->
+                  <a href="#product-pop-up" class="btn btn-default fancybox-fast-view" (click)="requestId(tablet.id)">View</a>
+                </div>
+              </div>
+              <h3><a href="shop-item.html">{{tablet.name}}</a></h3>
+              <div class="pi-price">{{tablet.priceProduct | currency: "VND"}} </div>
+              <a href="javascript:;" class="btn btn-default add2cart" (click)="addCart(tablet.id)">Add to cart</a>
+              <div class="sticker sticker-sale"></div>
+            </div>
+        </div>
+<!--    </div>-->
+
+
+<!--    <div class="row margin-bottom-20 ">-->
+      <h2>SmartWatch</h2>
+      <div class="row">
+        <div class="product-item col-md-3" *ngFor="let smartwatch of listSmartWatch">
+          <div class="pi-img-wrapper">
+            <img id="zoomSmartWatch" src="{{smartwatch.imageProduct}}" class="img-responsive" alt="Berry Lace Dress">
+            <div>
+<!--              <a href="{{smartwatch.imageProduct}}" class="btn btn-default fancybox-button">Zoom</a>-->
+                                <a href="#product-pop-up" class="btn btn-default fancybox-fast-view" (click)="requestId(smartwatch.id)" >View</a>
+            </div>
+          </div>
+          <h3><a href="shop-item.html">{{smartwatch.name}}</a></h3>
+          <div class="pi-price">{{smartwatch.priceProduct | currency: "VND"}} </div>
+          <a href="javascript:;" class="btn btn-default add2cart" (click)="addCart(smartwatch.id)">Add to cart</a>
+          <div class="sticker sticker-sale"></div>
+        </div>
+      </div>
+<!--    </div>-->
+
+    <!--    <div class="row margin-bottom-20 ">-->
+    <h2>SmartTV</h2>
+    <div class="row">
+      <div class="product-item col-md-3" *ngFor="let smarttv of listSmartTV">
+        <div class="pi-img-wrapper">
+          <img id="zoomSmartTV" src="{{smarttv.imageProduct}}" class="img-responsive" alt="Berry Lace Dress">
+          <div>
+<!--            <a href="{{smarttv.imageProduct}}" class="btn btn-default fancybox-button">Zoom</a>-->
+                              <a href="#product-pop-up" class="btn btn-default fancybox-fast-view" (click)="requestId(smarttv.id)">View</a>
+          </div>
+        </div>
+        <h3><a href="shop-item.html">{{smarttv.name}}</a></h3>
+        <div class="pi-price">{{smarttv.priceProduct | currency: "VND"}} </div>
+        <a href="javascript:;" class="btn btn-default add2cart" (click)="addCart(smarttv.id)">Add to cart</a>
+        <div class="sticker sticker-sale"></div>
+      </div>
+    </div>
+    <!--    </div>-->
+
+
+    <div class="row margin-bottom-35 " >
+      <div class="col-md-6 shop-index-carousel" style="margin: auto">
+        <div class="content-slider" >
+          <div id="myCarousel" class="carousel slide" data-ride="carousel" >
+            <!-- Indicators -->
+            <ol class="carousel-indicators" >
+              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+              <li data-target="#myCarousel" data-slide-to="1"></li>
+              <li data-target="#myCarousel" data-slide-to="2"></li>
+              <li data-target="#myCarousel" data-slide-to="3"></li>
+              <li data-target="#myCarousel" data-slide-to="4"></li>
+              <li data-target="#myCarousel" data-slide-to="5"></li>
+              <li data-target="#myCarousel" data-slide-to="6"></li>
+              <li data-target="#myCarousel" data-slide-to="7"></li>
+            </ol>
+            <div class="carousel-inner" >
+              <div class="item active" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra0-1020x570.jpeg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+              <div class="item" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra637896720090858259.jpg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+              <div class="item" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra637896720095258261.jpg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+              <div class="item" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra637896720092658298.jpg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+              <div class="item" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra637896720094288231.jpg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+              <div class="item" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra637896720091698234.jpg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+              <div class="item" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra637896720093508333.jpg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+              <div class="item" >
+                <img  src="https://cdn.tgdd.vn/Products/Images/522/247513/Slider/samsung-galaxy-tab-s8-ultra637896720096288333.jpg" class="img-responsive" alt="Berry Lace Dress">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- END TWO PRODUCTS & PROMO -->
+  </div>
+</div>
+
+<!--popup tablet-->
+<div id="product-pop-up" style="display: none; width: 700px;">
+  <div class="product-page product-pop-up">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-3">
+        <div class="product-main-image">
+          <img src="{{obj.imageProduct}}" alt="Cool green dress with red bell" class="img-responsive">
+        </div>
+        <div class="product-other-images">
+<!--          <a href="javascript:;" class="active"><img alt="Berry Lace Dress" src="assets/pages/img/products/model3.jpg"></a>-->
+<!--          <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model4.jpg"></a>-->
+<!--          <a href="javascript:;"><img alt="Berry Lace Dress" src="assets/pages/img/products/model5.jpg"></a>-->
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-9">
+        <h2>{{obj.nameProduct}}</h2>
+        <div class="price-availability-block clearfix">
+          <div class="price">
+            <strong>{{obj.priceProduct | currency: "VND"}} </strong>
+<!--            <em>$<span>62.00</span></em>-->
+          </div>
+          <div class="availability">
+            Availability: <strong>In Stock</strong>
+          </div>
+        </div>
+        <div class="description">
+          <p>MinhCa Store is a prestigious place for you to entrust your trust. <br>
+            Come to us to have the latest experience in technology.</p>
+        </div>
+        <div class="product-page-options">
+          <div class="pull-left">
+            <label class="control-label">Option</label>
+            <select >
+              <option>64G</option>
+              <option>128G</option>
+              <option>256G</option>
+              <option>512G</option>
+            </select>
+          </div>
+          <div class="pull-left">
+            <label class="control-label">Color:</label>
+            <select >
+              <option >Red</option>
+              <option >Blue</option>
+              <option >Black</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-page-cart">
+<!--          <div class="product-quantity">-->
+<!--            <input id="product-quantity" type="text" value="1" readonly name="product-quantity" class="form-control input-sm">-->
+<!--          </div>-->
+          <button class="btn btn-primary" type="submit" (click)="addCart(obj.id)">Add to cart</button>
+          <a href="shop-item.html" class="btn btn-default">More details</a>
+        </div>
+      </div>
+
+      <div class="sticker sticker-sale"></div>
+    </div>
+  </div>
+</div>
+
+<div class="brands">
+  <div class="container">
+    <div class="owl-carousel owl-carousel6-brands">
+      <a href="#"><img class="anh" src="https://images.samsung.com/is/image/samsung/assets/vn/about-us/brand/logo/pc/300_186_1.png?$568_N_PNG$" alt="canon" title="canon"></a>
+      <a href="#"><img class="anh" src="https://www.fayerwayer.com/resizer/Y0yfbu8XNuBg2_raYvkCoY0zWlc=/800x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/RLMKR6MWNJE5VNIRG2SAGXEWEM.jpg" alt="esprit" title="esprit"></a>
+      <a href="#"><img class="anh" src="https://ontop.vn/wp-content/uploads/2021/09/cover-ontop.vn-Apple-AR-Easter-Egg-logo-.jpg" alt="gap" title="gap"></a>
+      <a href="#"><img class="anh" src="https://thetechnomatics.com/wp-content/uploads/2020/06/Oppo-Logo.wine_-1024x683.png" alt="next" title="next"></a>
+      <a href="#"><img class="anh" src="https://cdn.tgdd.vn/Files/2018/11/15/1131651/realme-new-logo_800x450.jpg" alt="puma" title="puma"></a>
+      <a href="#"><img class="anh" src="https://vnrom.net/wp-content/uploads/2022/06/vivo-logo.jpg" alt="zara" title="zara"></a>
+
+    </div>
+  </div>
+</div>
+
+
